@@ -6,7 +6,7 @@
 /*   By: odessein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 13:48:40 by odessein          #+#    #+#             */
-/*   Updated: 2022/02/10 22:45:40 by odessein         ###   ########.fr       */
+/*   Updated: 2022/02/14 09:03:42 by odessein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 int	ft_strlen(char *str)
@@ -22,20 +22,17 @@ int	ft_strlen(char *str)
 char	*ft_strcat(char *dest, char *src)
 {
 	int		brows;
-	int		size_src;
-	int		size_dest;
-	char	*start;
+	int		len_src;
+	int		len_dest;
 
-	size_src = ft_strlen(src);
-	size_dest = ft_strlen(dest);
-	start = dest;
+	len_src = ft_strlen(src);
+	len_dest = ft_strlen(dest);
 	brows = 0;
-	while (brows < size_src)
+	while (brows < len_src)
 	{
-		dest[size_dest + brows] = src[brows];
+		dest[len_dest + brows] = src[brows];
 		++brows;
 	}
-	dest[size_dest + brows] = '\0';
-	dest = start;
+	dest[len_dest + brows] = '\0';
 	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: odessein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:33:05 by odessein          #+#    #+#             */
-/*   Updated: 2022/02/10 22:45:20 by odessein         ###   ########.fr       */
+/*   Updated: 2022/02/14 09:07:14 by odessein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 int	ft_strlen(char *str)
@@ -22,23 +22,19 @@ int	ft_strlen(char *str)
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
 	unsigned int	brows;
-	int				size_src;
-	int				size_dest;
-	char			*start;
+	unsigned int	len_src;
+	unsigned int	len_dest;
 
-	size_src = ft_strlen(src);
-	size_dest = ft_strlen(dest);
-	start = dest;
-	brows = -1;
-	while (++brows < nb)
+	len_src = ft_strlen(src);
+	len_dest = ft_strlen(dest);
+	brows = 0;
+	while (brows < nb)
 	{
-		if (brows > size_dest + nb + 1)
+		if (brows >= len_src)
 			break ;
-		if (brows >= (unsigned int )size_src)
-			break ;
-		dest[size_dest + (brows)] = src[brows];
+		dest[len_dest + (brows)] = src[brows];
+		brows++;
 	}
-	dest[size_dest + (++brows)] = '\0';
-	dest = start;
+	dest[len_dest + brows] = '\0';
 	return (dest);
 }

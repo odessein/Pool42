@@ -6,7 +6,7 @@
 /*   By: odessein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 12:06:47 by odessein          #+#    #+#             */
-/*   Updated: 2022/02/11 14:46:12 by odessein         ###   ########.fr       */
+/*   Updated: 2022/02/14 09:08:45 by odessein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 int	ft_strlen(char *str)
@@ -23,7 +23,7 @@ char	*ft_strstr(char	*str, char *to_find)
 {
 	unsigned int	brows;
 	unsigned int	brows_to_find;
-	int				size_to_find;
+	unsigned int	size_to_find;
 
 	brows = 0;
 	size_to_find = ft_strlen(to_find);
@@ -36,7 +36,7 @@ char	*ft_strstr(char	*str, char *to_find)
 		{
 			++brows_to_find;
 			++brows;
-			if (brows_to_find == (unsigned int )size_to_find)
+			if (brows_to_find == size_to_find)
 				return (str + (brows - brows_to_find));
 		}
 		if (brows_to_find != 0)
