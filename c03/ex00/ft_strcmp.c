@@ -6,22 +6,9 @@
 /*   By: odessein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 13:00:57 by odessein          #+#    #+#             */
-/*   Updated: 2022/02/14 09:01:02 by odessein         ###   ########.fr       */
+/*   Updated: 2022/02/14 13:14:22 by odessein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_strlen(char *str)
-{
-	int	size;
-
-	size = 0;
-	while (*str)
-	{
-		str = str + 1;
-		++size;
-	}
-	return (size);
-}
-
 int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;

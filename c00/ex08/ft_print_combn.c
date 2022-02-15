@@ -6,10 +6,11 @@
 /*   By: odessein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 03:36:24 by odessein          #+#    #+#             */
-/*   Updated: 2022/02/09 07:32:32 by odessein         ###   ########.fr       */
+/*   Updated: 2022/02/14 21:15:20 by odessein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
+#include <stdio.h>
 
 void	ft_putnbr(int nb)
 {
@@ -73,12 +74,14 @@ void	ft_increment(int *arr, int size, int *counter)
 		ft_print(arr, buffer_size);
 	}
 	brows_op = *counter;
+	printf("%i ", brows_op);;
 	++arr[buffer_size - brows_op];
 	while (brows_op > 0)
 	{
 		arr[buffer_size - brows_op + 1] = arr[buffer_size - brows_op] + 1;
 		--brows_op;
 	}
+	*counter--;
 	if (arr[buffer_size] < 10)
 		ft_print(arr, buffer_size);
 }
@@ -99,12 +102,22 @@ void	ft_print_combn(int n)
 	ft_print(arr, (n - 1));
 	while (arr[0] < 10 - n)
 	{
-		if (arr[n - counter - 1] >= (10 - counter))
+		if (arr[n - counter - 1]>= (10 - counter))
+		{
+	//		printf("%i", arr[n - counter - 1]);
 			++counter;
+		}
 		if ((n == 1 && arr[0] >= 9))
 		{
 			break ;
 		}
 		ft_increment(arr, n, ptr_counter);
+		write(1, "\n", 1);
 	}
+}
+
+int	main(void)
+{
+	ft_print_combn(3);
+	return (0);
 }

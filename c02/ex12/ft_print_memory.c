@@ -6,7 +6,7 @@
 /*   By: odessein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 02:58:13 by odessein          #+#    #+#             */
-/*   Updated: 2022/02/09 11:26:54 by odessein         ###   ########.fr       */
+/*   Updated: 2022/02/14 09:53:33 by odessein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -19,6 +19,7 @@ void	ft_print_string(char *string, int size)
 
 	buff = string;
 	counter = 0;
+	write(STDOUT_FILENO, " ", 1);
 	while (string < (buff + 16) && counter < size)
 	{
 		if (*string < 32 || *string > 126)
@@ -64,17 +65,12 @@ void	ft_print_line(char *str)
 		write(STDOUT_FILENO, (BASE + ((unsigned int) *(str + 1)) % 16), 1);
 		if (*(str + 1) == '\0' && n < 7)
 			break ;
-		else if (*str == '\0' && n < 7)
-		{
-			write(STDOUT_FILENO, "  ", 2);
-			break ;
-		}
-		write(STDOUT_FILENO, " ", 1);
+		if (n < 7)
+			write(STDOUT_FILENO, " ", 1);
 		++str;
 	}
-	n--;
 	while (++n < 8)
-		write(STDOUT_FILENO, "    ", 4);
+		write(STDOUT_FILENO, " ", 1);
 }
 
 void	ft_print_mem(unsigned long memory)
@@ -112,7 +108,7 @@ void	*ft_print_memory(void *addr, unsigned int size)
 		ft_print_mem((unsigned long) addr);
 		write(STDOUT_FILENO, ": ", 2);
 		ft_print_line((char *)addr);
-		ft_print_string((char *) addr, (size - counter));
+		ft_print_string((char *)addr, (size - counter));
 		if ((unsigned int )(counter + 16) > size)
 			break ;
 		write(STDOUT_FILENO, "\n", 1);
@@ -121,10 +117,4 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	}
 	addr = buff_addr;
 	return (addr);
-}
-
-int		main(void)
-{
-	char str[] = "Ceci est un test d'affichage de print memory!\nSegFault";
-	ft_print_memory(str, 54);
 }

@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odessein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 21:00:24 by odessein          #+#    #+#             */
-/*   Updated: 2022/02/15 16:01:56 by odessein         ###   ########.fr       */
+/*   Created: 2022/02/14 13:17:54 by odessein          #+#    #+#             */
+/*   Updated: 2022/02/14 14:02:14 by odessein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+int	ft_iterative_factorial(int nb)
 {
-	int	size;
+	int	count;
 
-	size = 0;
-	while (str[size] != '\0')
+	count = nb - 1;
+	while (count > 0)
 	{
-		++size;
+		nb = nb * count;
+		count--;
 	}
-	return (size);
+	return (nb);
+}
+
+int	main(void)
+{
+	ft_iterative_factorial(5);
+	return (0);
 }

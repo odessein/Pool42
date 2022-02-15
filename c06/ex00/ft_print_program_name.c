@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odessein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 21:00:24 by odessein          #+#    #+#             */
-/*   Updated: 2022/02/15 16:01:56 by odessein         ###   ########.fr       */
+/*   Created: 2022/02/14 21:59:40 by odessein          #+#    #+#             */
+/*   Updated: 2022/02/15 14:08:26 by odessein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-int	ft_strlen(char *str)
+int	main(int argc, char *argv[])
 {
-	int	size;
+	int	i;
 
-	size = 0;
-	while (str[size] != '\0')
+	(void) argc;
+	i = 0;
+	while (argv[0][i] != '\0')
 	{
-		++size;
+		write(STDOUT_FILENO, &argv[0][i], 1);
+		i++;
 	}
-	return (size);
+	return (0);
 }

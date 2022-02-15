@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_recursive_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odessein <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 21:00:24 by odessein          #+#    #+#             */
-/*   Updated: 2022/02/15 16:01:56 by odessein         ###   ########.fr       */
+/*   Created: 2022/02/14 17:17:22 by odessein          #+#    #+#             */
+/*   Updated: 2022/02/15 16:06:14 by odessein         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+int	ft_recursive_power(int nb, int power)
 {
-	int	size;
+	if (power < 0)
+		return (0);
+	else if (power < 1)
+		return (1);
+	else if (power < 2)
+		return (nb * power);
+	return (nb * ft_recursive_power(nb, power - 1));
+}
 
-	size = 0;
-	while (str[size] != '\0')
-	{
-		++size;
-	}
-	return (size);
+int	main(void)
+{
+	return (0);
 }
